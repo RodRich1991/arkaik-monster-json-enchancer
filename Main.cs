@@ -123,7 +123,8 @@ namespace Arkaik_Monster_Json_Enchancer
                 {
                     string json = JsonSerializer.Serialize(list, new JsonSerializerOptions { 
                         WriteIndented = true,
-                        Encoder = System.Text.Encodings.Web.JavaScriptEncoder.UnsafeRelaxedJsonEscaping
+                        Encoder = System.Text.Encodings.Web.JavaScriptEncoder.UnsafeRelaxedJsonEscaping,
+                        DefaultIgnoreCondition = System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingNull
                     });
                     File.WriteAllText(filePath, json);
                     return true;
