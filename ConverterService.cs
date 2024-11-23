@@ -57,7 +57,7 @@ namespace Arkaik_Monster_Json_Enchancer
             if (string.IsNullOrEmpty(path))
                 return null;
 
-            string spawnPattern = @"^(?<Map>[^,]+),\d+(?:,\d+)*\s+monster\s+(?<Name>[^,]+)\s+(?<Id>\d+),(?<Qty>\d+)(?:,\d+)*,";
+            string spawnPattern = @"^(?<Map>[^,]+),\d+(?:,\d+)*\s+monster\s+(?<Name>[^,]+)\s+(?<Id>\d+),(?<Qty>\d+),(?<Delay>\d+)(?:,\d+)*,";
             var monsterSpawns = new List<MonsterSpawn>();
 
             try
@@ -81,7 +81,8 @@ namespace Arkaik_Monster_Json_Enchancer
                             Map = match.Groups["Map"].Value,
                             Name = match.Groups["Name"].Value,
                             Id = int.Parse(match.Groups["Id"].Value),
-                            Qty = int.Parse(match.Groups["Qty"].Value)
+                            Qty = int.Parse(match.Groups["Qty"].Value),
+                            Delay = int.Parse(match.Groups["Delay"].Value)
                         };
 
                         // Adiciona aos resultados

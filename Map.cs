@@ -20,11 +20,11 @@ namespace Arkaik_Monster_Json_Enchancer
         {
             Mobs = spawns?
                 .Where(spawn => spawn.Map == Map)
-                .GroupBy(spawn => spawn.Id)
-                .Select(group => new MobSpawn
+                .Select(spawn => new MobSpawn
                 {
-                    Id = group.Key,
-                    Qty = group.Sum(spawn => spawn.Qty) 
+                    Id = spawn.Id,
+                    Qty = spawn.Qty,
+                    Delay = spawn.Delay,
                 })
                 .ToList();
         }
@@ -64,5 +64,6 @@ namespace Arkaik_Monster_Json_Enchancer
     {
         public int Id { get; set; }
         public int Qty { get; set; }
+        public int Delay { get; set; }
     }
 }

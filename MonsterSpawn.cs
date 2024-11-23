@@ -12,5 +12,6 @@ namespace Arkaik_Monster_Json_Enchancer
         public string Name { get; set; }
         public string Map { get; set; }
         public int Qty { get; set; }
+        public int Delay { get; set; }
     }
 }
