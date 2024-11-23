@@ -41,7 +41,6 @@ namespace Arkaik_Monster_Json_Enchancer
                 .Build();
 
                 string ymlString = File.ReadAllText(path);
-                // Desserializa o YAML em uma lista de objetos Monster
                 Gem gemFile = deserializer.Deserialize<Gem>(ymlString);
                 return gemFile.Body;
             }
@@ -66,16 +65,12 @@ namespace Arkaik_Monster_Json_Enchancer
                 {
                     Console.WriteLine($"Processando arquivo: {Path.GetFileName(file)}");
 
-                    // Lê todas as linhas do arquivo
                     var linhas = File.ReadAllLines(file);
-
                     foreach (var linha in linhas)
                     {
-                        // Ignora linhas que não correspondem ao formato
                         var match = Regex.Match(linha, spawnPattern);
                         if (!match.Success) continue;
 
-                        // Extrai os dados
                         var monster = new MonsterSpawn
                         {
                             Map = match.Groups["Map"].Value,
@@ -84,8 +79,6 @@ namespace Arkaik_Monster_Json_Enchancer
                             Qty = int.Parse(match.Groups["Qty"].Value),
                             Delay = int.Parse(match.Groups["Delay"].Value)
                         };
-
-                        // Adiciona aos resultados
                         monsterSpawns.Add(monster);
                     }
                 }

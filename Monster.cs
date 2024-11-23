@@ -13,12 +13,14 @@ namespace Arkaik_Monster_Json_Enchancer
         public List<string> Name { get; set; }
         public int Level { get; set; }
         public bool? MVP { get; set; }
-        public int? Gem { get; set; }
+        public MonsterGem? Gem { get; set; }
         public List<string>? Maps { get; set; }
 
         public void SetGem(List<GemEntry> Gems)
         {
-            Gem = Gems?.Find(gem => gem.Monster == Id)?.Gem;
+           var gem = Gems?.Find(gem => gem.Monster == Id);
+            if (gem != null)
+                Gem = new MonsterGem { Id = gem.Gem, Chance = gem.Chance };
         }
 
         public void SetMaps(List<MonsterSpawn> spawns)
@@ -29,5 +31,11 @@ namespace Arkaik_Monster_Json_Enchancer
                 .Distinct()
                 .ToList();
         }
+    }
+
+    internal class MonsterGem
+    {
+        public int Id { get; set; }
+        public int Chance { get; set; }
     }
 }

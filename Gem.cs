@@ -23,10 +23,11 @@ namespace Arkaik_Monster_Json_Enchancer
         public int Gem { get; set; }              // Identificador da gem
         public string Desc { get; set; }          // Descrição (nome da gem)
         public int Monster { get; set; }          // Identificador do monstro associado
+        public int Chancd { get; set; }           // Porcentagem de drop
         public bool AnnounceDrop { get; set; }    // Indica se o drop será anunciado
         public int Chance { get; set; }           // Chance de drop (em base percentual)
         public string Script { get; set; }        // Script associado à gem
-        public string? EquipScript { get; set; }
-        public string? UnEquipScript { get; set; }
+        public string? EquipScript { get; set; }   // Script quando equipa
+        public string? UnEquipScript { get; set; } // Script quando desequipa
     }
 }
